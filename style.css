@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 640px;
+    width: 640px;
+    margin-top: 20px;
+}
+.individual-grid {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px
+}
+
+.grid-container .individual-grid {
+    border: .5px solid black;
+}
+
+.div-hidden {
+    background-color: rgb(132, 187, 253);
+}
