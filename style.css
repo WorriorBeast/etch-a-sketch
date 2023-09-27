@@ -1,7 +1,12 @@
+html {
+    background: rgb(17, 81, 124);
+}
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
+
 .grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -10,14 +15,17 @@ body {
     width: 640px;
     margin-top: 20px;
 }
-.individual-grid {
-    display: inline-block;
+
+.default-grid {
     box-sizing: border-box;
     height: 40px;
-    width: 40px
+    width: 40px;
+}
+.individual-grid {
+    box-sizing: border-box;
 }
 
-.grid-container .individual-grid {
+.individual-grid, .default-grid{
     border: .5px solid black;
 }
 
