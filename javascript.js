@@ -45,6 +45,10 @@ function button() {
     if (!Number.isInteger(sizeInput)) alert('Please enter a whole number');
 
     if (sizeInput <= 0 || sizeInput > 100) alert('Please enter a number from 1 to 100');
+
+    if (sizeInput >= 1 && sizeInput <= 100) {
+        customGrid(sizeInput);
+        }
 }
 
 const btn = document.querySelector('button');
