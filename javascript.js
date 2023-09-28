@@ -18,6 +18,8 @@ function customGrid(sizeInput) {
     let gridSize = Math.pow(sizeInput,2);
     let gridPixelSize = 640 / sizeInput;
 
+    removePreviousGrid();
+
     for (i = 0; i < gridSize; i++) {
         const div = document.createElement('div');
         div.classList.toggle('individual-grid');
@@ -31,14 +33,18 @@ function customGrid(sizeInput) {
     }));
 }
 
+function removePreviousGrid() {
+    while (gridContainer.hasChildNodes()) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+}
+
 function button() {
     let sizeInput = Number(prompt('What size grid do you want?\nMaximum 100 x 100\nMinimum 1 x 1'));
 
     if (!Number.isInteger(sizeInput)) alert('Please enter a whole number');
 
     if (sizeInput <= 0 || sizeInput > 100) alert('Please enter a number from 1 to 100');
-
-    customGrid(sizeInput);
 }
 
 const btn = document.querySelector('button');
