@@ -1,22 +1,6 @@
 const gridContainer = document.querySelector('.grid-container');
 
-function defaultGrid() {
-    for (i = 0; i < 256; i++) {
-        const div = document.createElement('div');
-        div.classList.add('default-grid');
-        gridContainer.appendChild(div);
-    }
-    const divs = document.querySelectorAll('.default-grid');
-
-    for (i = 0; i < divs.length; i++) {
-        divs[i].addEventListener('mousemove', function() {
-            this.style.cssText = `background-color: ${randomColor()}`;
-        }, {once: true})
-    }
-}
-defaultGrid();
-
-function customGrid(sizeInput) {
+function grid(sizeInput) {
     let gridSize = Math.pow(sizeInput,2);
     let gridPixelSize = 640 / sizeInput;
     let squareDimension = `height: ${gridPixelSize}px; width: ${gridPixelSize}px;`;
@@ -37,6 +21,7 @@ function customGrid(sizeInput) {
         }, {once: true})
     }
 }
+grid(16);
 
 function removePreviousGrid() {
     while (gridContainer.hasChildNodes()) {
@@ -52,7 +37,7 @@ function button() {
     if (sizeInput <= 0 || sizeInput > 100) alert('Please enter a number from 1 to 100');
 
     if (sizeInput >= 1 && sizeInput <= 100) {
-        customGrid(sizeInput);
+        grid(sizeInput);
         }
 }
 
