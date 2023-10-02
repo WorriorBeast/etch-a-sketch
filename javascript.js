@@ -8,29 +8,34 @@ function defaultGrid() {
     }
     const divs = document.querySelectorAll('.default-grid');
 
-    divs.forEach(div => div.addEventListener('mousemove', () => {
-    div.classList.add('div-hidden');
-    }));
+    for (i = 0; i < divs.length; i++) {
+        divs[i].addEventListener('mousemove', function() {
+            this.style.cssText = `background-color: ${randomColor()}`;
+        }, {once: true})
+    }
 }
 defaultGrid();
 
 function customGrid(sizeInput) {
     let gridSize = Math.pow(sizeInput,2);
     let gridPixelSize = 640 / sizeInput;
+    let squareDimension = `height: ${gridPixelSize}px; width: ${gridPixelSize}px;`;
 
     removePreviousGrid();
 
     for (i = 0; i < gridSize; i++) {
         const div = document.createElement('div');
-        div.classList.toggle('individual-grid');
-        div.setAttribute('style', `height: ${gridPixelSize}px; width: ${gridPixelSize}px;`)
+        div.classList.add('individual-grid');
+        div.setAttribute('style', squareDimension);
         gridContainer.appendChild(div);
     }
     const divs = document.querySelectorAll('.individual-grid');
 
-    divs.forEach(div => div.addEventListener('mousemove', () => {
-        div.classList.add('div-hidden');
-    }));
+    for (i = 0; i < divs.length; i++) {
+        divs[i].addEventListener('mousemove', function() {
+            this.style.cssText = `background-color: ${randomColor()}; ${squareDimension}`;
+        }, {once: true})
+    }
 }
 
 function removePreviousGrid() {
@@ -54,3 +59,20 @@ function button() {
 const btn = document.querySelector('button');
 
 btn.addEventListener('click', button);
+
+function randomColor() {
+    let color = ['rgb(255,204,204)', 'rgb(255,51,51)', 'rgb(102,0,0)', 'rgb(255,229,204)', 'rgb(255,178,102)', 
+        'rgb(255,128,0)', 'rgb(255,255,204)', 'rgb(255,255,0)', 'rgb(204,204,0)', 'rgb(153,153,0)', 
+        'rgb(229,255,204)', 'rgb(153,255,51)', 'rgb(102,204,0)', 'rgb(51,102,0)', 'rgb(204,255,204)', 
+        'rgb(153,255,153)', 'rgb(51,255,51)', 'rgb(0,102,0)', 'rgb(204,255,255)', 'rgb(102,255,255)', 
+        'rgb(0,255,255)', 'rgb(0,204,204)', 'rgb(0,153,153)', 'rgb(204,229,255)', 'rgb(102,178,255)', 
+        'rgb(0,128,255)', 'rgb(0,76,153)', 'rgb(204,204,255)', 'rgb(102,102,255)', 'rgb(0,0,255)', 
+        'rgb(0,0,153)', 'rgb(229,204,255)', 'rgb(178,102,255)', 'rgb(127,0,255)', 'rgb(76,0,153)', 
+        'rgb(255,204,255)', 'rgb(255,153,255)', 'rgb(255,0,255)', 'rgb(153,0,153)', 'rgb(255,153,204)', 
+        'rgb(255,51,153)', 'rgb(204,0,102)', 'rgb(224,224,224)', 'rgb(160,160,160)', 
+        'rgb(96,96,96)', 'rgb(64,64,64)'];
+
+    let colorGenerator = color[Math.floor(Math.random() * color.length)];
+
+    return colorGenerator;
+}
