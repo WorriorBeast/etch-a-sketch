@@ -1,5 +1,5 @@
 html {
-    background: rgb(17, 81, 124);
+    background: radial-gradient(rgba(17, 81, 124, .92), rgba(0, 0, 0, .94));
 }
 body {
     display: flex;
@@ -17,15 +17,15 @@ body {
     background-color: rgb(255,255,255);
 }
 
-.default-grid {
-    box-sizing: border-box;
-    height: 40px;
-    width: 40px;
-}
 .individual-grid {
     box-sizing: border-box;
 }
 
-.individual-grid, .default-grid{
-    border: .5px solid black;
+button {
+    color: white;
+    font-size: 16px;
+    padding: 8px 25px;
+    border-radius: 17px;
+    border: 1px solid white;
+    background-color: black;
 }
