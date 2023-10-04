@@ -16,9 +16,32 @@ function grid(sizeInput) {
     const divs = document.querySelectorAll('.individual-grid');
 
     for (i = 0; i < divs.length; i++) {
-        divs[i].addEventListener('mousemove', function() {
+        divs[i].addEventListener('mouseenter', function() {
             this.style.cssText = `background-color: ${randomColor()}; ${squareDimension}`;
         }, {once: true})
+
+        divs[i].addEventListener('mouseenter', function() {
+            const getColorStyle = window.getComputedStyle(this, null);
+            const rgbColor = getColorStyle.getPropertyValue('background-Color');
+            
+            let splitRgb = rgbColor.split(',');
+
+            const rValue = Number(splitRgb[0].replace('rgb(', ''));
+            const gValue = Number(splitRgb[1].replace(' ', ''));
+            const bSplit = splitRgb[2].replace(' ', '');
+            const bValue = Number(bSplit.replace(')', ''));
+
+            let rDecrement = rValue / 10;
+            let r = rValue - rDecrement;
+
+            let gDecrement = gValue / 10;
+            let g = gValue - gDecrement;
+
+            let bDecrement = bValue / 10;
+            let b = bValue - bDecrement;
+
+            this.style.cssText = `background-color: rgb(${r}, ${g}, ${b}); ${squareDimension}`;
+        })
     }
 }
 grid(16);
